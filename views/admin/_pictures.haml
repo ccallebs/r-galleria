@@ -15,7 +15,7 @@
       %option(value="0") Select a Gallery
       - galleries.each do |g|
         %option(value="#{g.id}") #{g.name}
-  %p
+  %p(id = "add-files")
     %input(type="file" name="files[0]")
       (
       %a(href="#" id="add-new-file") +

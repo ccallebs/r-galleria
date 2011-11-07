@@ -26,6 +26,28 @@ class Gallery
   belongs_to :entity
 end
 
+class Upload
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :filename, String
+  
+  belongs_to :gallery
+  belongs_to :entity
+
+  def upload_file(file)
+    filename = "#{@entity_id}-#{@gallery_id}-#{file[:filename]}"
+    @filename = filename
+    directory = "#{Dir.pwd}/public/files/"
+
+    # creating file path
+    path = File.join(directory, filename)
+
+   # writing the file
+   File.open(path, "wb") { |f| f.write(file[:tempfile].read) } 
+  end
+end
+
 # invoking migration
 DataMapper.auto_migrate!
 
@@ -75,4 +97,25 @@ post '/admin/galleries/new' do
   e.save
 
   redirect "/admin"
+end
+
+# new pictures
+post '/admin/pictures/new' do
+  process_files(params[:files])
+end
+
+def process_files(files)
+  files.keys.each do |k|
+    unless files[:file] && (tmpfile = files[:file][:tempfile]) && (name = file[:file][:filename])
+      puts "No file selected."
+    end
+
+    f = Upload.new
+    f.entity_id = params[:entity_id]
+    f.gallery_id = params[:gallery_id]
+    f.filename = "#{f.entity_id}-#{f.gallery_id}-#{name}"
+    
+    f.upload_file(files[k])
+    f.save
+  end
 end
