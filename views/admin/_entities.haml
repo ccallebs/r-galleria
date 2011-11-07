@@ -1,0 +1,14 @@
+%h2 Entities
+%form(action="/admin/entities/destroy" method="POST")
+  %select(name="id")
+    %option(value="0") Select Entity
+    - entities.each do |e|
+      %option(value="#{e.id}") #{e.name}
+  %input(type="submit" value="Destroy Entity")
+
+%h2 Create New Entity
+%form(action="/admin/entities/new" method="POST")
+  %label(for="name") Name
+  %input(type="text" name="name")
+  %br
+  %input(type="submit")

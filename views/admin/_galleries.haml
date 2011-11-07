@@ -1,0 +1,28 @@
+%h1 Galleries
+
+%form(action="/admin/galleries/destroy" method="POST")
+  %p
+    %label(for="id") Gallery
+    %select(name="id")
+      %option(value="0") Select Gallery
+      - galleries.each do |g|
+        %option(value="#{g.id}") #{g.name}
+    %input(type="Submit" value="Destroy gallery")
+
+%h2 Create New Gallery
+
+%form(action="/admin/galleries/new" method="POST")
+  %p
+    %label(for="name") Name
+    %input(type="text" name="name")
+  %p
+    %label(for="description") Description
+    %input(type="text" name="description")
+  %p
+    %label(for="entity_id") Associated Entity
+    %select(name="entity_id")
+      %option(value="0") Select Entity
+      - entities.each do |e|
+        %option(value="#{e.id}") #{e.name}
+  %p
+    %input(type="submit")

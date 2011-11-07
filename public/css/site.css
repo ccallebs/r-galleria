@@ -1,0 +1,24 @@
+html, body {
+  background: #f0f0f0;
+  font-family: Helvetica;
+  font-size: 12px;
+  color: #333;
+}
+
+h1 {
+  font-size: 2em;	
+  text-shadow: 2px 2px 2px #999;
+}
+
+h2 {
+  font-size: 1.2em;
+  text-shadow: 2px 2px 2px #999;
+}
+
+input {
+  color: #08233e;
+  background-color: #f0f0f0;
+  font-family: Consolas;
+  padding: 5px;
+  box-shadow: 1px 1px 3px #000;
+}

@@ -1,0 +1,23 @@
+%h2 Pictures
+
+%h2 Add New Pictures
+
+%form(action="/admin/pictures/new" enctype="multipart/form-data" method="POST")
+  %p
+    %label(for="entity_id") Associated Entity
+    %select(name="entity_id")
+      %option(value="0") Select an Entity
+      - entities.each do |e|
+        %option(value="#{e.id}") #{e.name}
+  %p
+    %label(for="gallery_id") Associated Gallery
+    %select(name="gallery_id")
+      %option(value="0") Select a Gallery
+      - galleries.each do |g|
+        %option(value="#{g.id}") #{g.name}
+  %p
+    %input(type="file" name="files[0]")
+      (
+      %a(href="#" id="add-new-file") +
+      )
+  %input(type="submit" value="Add Files")

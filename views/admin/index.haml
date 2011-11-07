@@ -1,0 +1,29 @@
+%link(href="/css/admin/index.css" rel="stylesheet" type="text/css")
+
+%script(src="http://cdn.jquerytools.org/1.2.6/jquery.tools.min.js")
+%script(src="/scripts/admin/entities.js")
+%script(src="/scripts/admin/pictures.js")
+%script(src="/scripts/admin/pictures-file-tmp.js")  
+
+%h1 Admin
+
+%ul(class="tabs")
+  %li
+    %a(href="#") Entities
+  %li
+    %a(href="#") Galleries
+  %li
+    %a(href="#") Pictures
+
+%div(class="panes")
+  - # Entities
+  %div 
+    = haml :'admin/_entities', :locals => { :entities => entities }
+  - # Galleries
+  %div
+    = haml :'admin/_galleries', :locals => { :entities => entities,
+                                             :galleries => galleries }
+    - # Pictures
+  %div
+    = haml :'admin/_pictures', :locals => { :entities => entities,
+                                            :galleries => galleries }
