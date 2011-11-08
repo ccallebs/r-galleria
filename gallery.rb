@@ -3,6 +3,7 @@ require 'sinatra'
 require 'dm-core'
 require 'dm-migrations'
 require 'haml'
+require 'RMagick'
 
 # setting up datamapper to use sqlite
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/r-galleria.db")
